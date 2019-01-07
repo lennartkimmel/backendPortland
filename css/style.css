@@ -18,8 +18,38 @@ label {
     font-weight: bold;
 }
 
+.inputField{
+    width: 50%;
+    margin-left: 50px;
+    /*test values*/
+    background-color: brown;
+    color: white;
+}
+
+.data-submit {
+    padding: 1%;
+}
+
 .errors {
     color: red;
+}
+
+.data-field {
+    padding: 10px 10px 10px 10px;
+    padding-right: 20%;
+    min-width: 50%;
+    /*background-color: brown;*/
+    border: solid;
+    margin-right: 20%;
+}
+
+.sectionHeader {
+    background-color: #f2bdc9;
+    padding: 5%;
+}
+
+.sectionBody {
+    /*background-color: aquamarine;*/
 }
 
 td.image img {
