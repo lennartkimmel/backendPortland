@@ -86,10 +86,15 @@ function insertReservationIntoDatabase($db, $firstName, $lastName, $street, $ema
     <title>Reservering</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 </head>
 <body>
-<section class="sectionHeader">
-    <h1 class="reservationHeader">Maak uw reservatie hier!</h1>
+<section class="backgroundtheme white-text" id="welcome">
+    <br><br>
+    <h1 class="center-align center">Welkom ma dudes</h1>
+    <br><br>
 </section>
 
 <?php
@@ -98,38 +103,45 @@ showErrorsOnClientSide($errors);
 
 <!--in een FORM moeten altijd meerdere attributen zitten zoals: type (verplicht bij HTML)  -> name (Verplicht bij php anders niet opgenomen in PHP)-> value-->
 <section class="sectionBody">
+    <div class="container">
     <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post">
-        <div class="data-field">
+        <div class="">
             <label for="Voornaam" class="labels">Voornaam</label>
-            <input class="inputField" type="text" name="Voornaam" placeholder="Voornaam" value="<?= (isset($firstName) ? $firstName : ''); ?>"/>
+            <input class="" type="text" name="Voornaam" placeholder="Voornaam" value="<?= (isset($firstName) ? $firstName : ''); ?>"/>
         </div>
-        <div class="data-field">
+        <div class="">
             <label for="Achternaam" class="labels">Achternaam</label>
-            <input class="inputField" type="text" name="Achternaam" placeholder="Achternaam" value="<?= (isset($lastName) ? $lastName : ''); ?>"/>
+            <input class="" type="text" name="Achternaam" placeholder="Achternaam" value="<?= (isset($lastName) ? $lastName : ''); ?>"/>
         </div>
-        <div class="data-field">
+        <div class="">
             <label for="Straatnaam" class="labels">Straatnaam</label>
-            <input class="inputField" type="text" name="Straatnaam" placeholder="Straatnaam" value="<?= (isset($street) ? $street : ''); ?>"/>
+            <input class="" type="text" name="Straatnaam" placeholder="Straatnaam" value="<?= (isset($street) ? $street : ''); ?>"/>
         </div>
-        <div class="data-field">
+        <div class="">
             <label for="Email">Email</label>
-            <input class="inputField" type="email" name="Email" placeholder="Email" value="<?= (isset($email) ? $email : ''); ?>"/>
+            <input class="" type="email" name="Email" placeholder="Email" value="<?= (isset($email) ? $email : ''); ?>"/>
         </div>
-        <div class="data-field">
+        <div class="">
             <label for="Telefoon">Telefoonnummer</label>
-            <input class="inputField" type="number" name="Telefoon" placeholder="Telefoonnummer" value="<?= (isset($phoneNumber) ? $phoneNumber : ''); ?>"/>
+            <input class="" type="number" name="Telefoon" placeholder="Telefoonnummer" value="<?= (isset($phoneNumber) ? $phoneNumber : ''); ?>"/>
         </div>
-        <div class="data-field">
+        <div class="">
             <label for="Bezoekerspas">Bezoekerspas</label>
-            <input class="inputField" type="text" name="Bezoekerspas" placeholder="Bezoekerspas" value="<?= (isset($visitorsPass) ? $visitorsPass : ''); ?>"/>
+            <input class="" type="text" name="Bezoekerspas" placeholder="Bezoekerspas" value="<?= (isset($visitorsPass) ? $visitorsPass : ''); ?>"/>
         </div>
         <div class="data-submit">
             <input type="submit" name="submit" value="Save"/>
         </div>
     </form>
+    </div>
 </section>
 <!--<div>-->
 <!--    <a href="index.php">Ga terug naar home</a>-->
 <!--</div>-->
+
+<!-- scripts -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
 </body>
 </html>
