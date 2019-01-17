@@ -39,6 +39,7 @@ function echoErrorsAsHtml ($errors) {
     echo "</ul>";
 }
 
+// Does the name of the function. It gives errors back when fields are left open
 function getErrorsForEmptyFields($firstName, $lastName, $street, $email, $phoneNumber, $visitorsPass) {
     $errors = [];
     if ($firstName == "") {
@@ -68,7 +69,7 @@ function insertReservationIntoDatabase($db, $firstName, $lastName, $street, $ema
                   VALUES ('$firstName', '$lastName', '$street', '$email', '$phoneNumber', '$visitorsPass')";
     $result = mysqli_query($db, $query)
     or die('Error: '.$query);
-    //als de invoer geslaagd is wordt je terug gestuurd naar index.php
+    //When you inserted data into the table you'll get redirected to the index.php page
     if ($result) {
         header('Location: index.php');
         exit;
@@ -91,9 +92,11 @@ function insertReservationIntoDatabase($db, $firstName, $lastName, $street, $ema
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 </head>
 <body>
-<section class="backgroundtheme white-text" id="welcome">
+<section class="backgroundtheme black-text" id="welcome">
+    <img src="images/PortlandLogo.png">
     <br><br>
-    <h1 class="center-align center">Welkom ma dudes</h1>
+    <h3 class="center-align center">Maak hier uw reservering</h3>
+    <h4 class="center-align center">voor het wijkrestaurant</h4>
     <br><br>
 </section>
 
@@ -130,15 +133,27 @@ showErrorsOnClientSide($errors);
             <input class="" type="text" name="Bezoekerspas" placeholder="Bezoekerspas" value="<?= (isset($visitorsPass) ? $visitorsPass : ''); ?>"/>
         </div>
         <div class="data-submit">
-            <input type="submit" name="submit" value="Save"/>
+            <input type="submit" name="submit" value="Reserveren"/>
         </div>
     </form>
     </div>
 </section>
-<!--<div>-->
-<!--    <a href="index.php">Ga terug naar home</a>-->
-<!--</div>-->
 
+<section>
+    <div class="btn2">
+        <a class="" href="https://autoriteitpersoonsgegevens.nl/sites/default/files/atoms/files/2017-11_stappenplan_avg_online_v2.pdf"><b>Info AVG</b></a>
+    </div>
+</section>
+<footer class="footerIndex">
+    <ul>
+        <li>CONTACT</li>
+        <li>Stichting Hulp- en Ontmoetingscentrum Portland</li>
+        <li>Portlandstraat 57 | 3086 XG | Rotterdam</li>
+        <li> 010 - 429 27 30</li>
+        <li>info@hulpcentrumportland.nl</li>
+        <li>KvK: 66134617 | Giften: NL68RABO0311225756 | ANBI instelling: 856409455</li>
+    </ul>
+</footer>
 <!-- scripts -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

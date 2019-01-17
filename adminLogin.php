@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     // If everything is filled in the db can be checked
     if(empty($errors))
     {
-        //Get password & name from DB
+        //Get the email from the DB
         $query = sprintf("SELECT * FROM gebruikers WHERE email = '%s'", mysqli_real_escape_string($db, $email));
         $result = mysqli_query($db, $query);
         $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -47,12 +47,15 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html>
 <head>
-    <title>Music Collection Login</title>
+    <title>Portland Login</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<body>
-<h1>Login</h1>
+<body class="adminloginbody">
+<section class="adminloginhead">
+    <img src="images/PortlandLogo.png" class="adminloginlogo">
+</section>
+<h1 class="loginheader">Portland login</h1>
 
 <form id="login" method="post" action="<?= $_SERVER['REQUEST_URI']; ?>">
     <div>
@@ -65,12 +68,10 @@ if (isset($_POST['submit'])) {
         <input type="password" name="password" id="password"/>
         <span class="error"><?= isset($errors['password']) ? $errors['password'] : ''; ?></span>
     </div>
-    <div>
+    <div class="adminloginbutton">
         <input type="submit" name="submit" value="Login"/>
     </div>
-    <div>
-        <a href="index.php">Terug naar index</a>
-    </div>
+    <img src="images/PortlandHuismerk.png" class="huismerkLogo">
 </form>
 </body>
 </html>
