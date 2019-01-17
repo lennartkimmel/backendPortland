@@ -32,6 +32,11 @@ if (isset($_GET['logout'])) {
         <br>
         <br>
         <div class="btn1">
+            <a class="" href="admin.php"><b>Create new user</b></a>
+        </div>
+        <br>
+        <br>
+        <div class="btn1">
             <a class="" href="logout.php"><b>Logout</b></a>
         </div>
     </div>

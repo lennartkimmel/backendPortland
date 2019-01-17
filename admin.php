@@ -31,7 +31,10 @@ if (isset($_POST['submit']))
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body class="adminloginbody">
+<section class="adminloginhead">
+    <img src="images/PortlandLogo.png" class="adminloginlogo">
+</section>
 <h1>New User</h1>
 <form action="" method="post">
     <div>
@@ -44,6 +47,7 @@ if (isset($_POST['submit']))
         <input type="password" name="password" id="password"/>
         <span class="error"><?= isset($errors['password']) ? $errors['password'] : ''; ?></span>
     </div>
+    <br>
     <div>
         <input type="submit" name="submit" value="Register"/>
     </div>
