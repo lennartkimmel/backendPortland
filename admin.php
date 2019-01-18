@@ -1,6 +1,7 @@
 <?php
 //Require database in this file
 require_once "includes/connectToDb.php";
+
 //If form is posted, lets validate!
 if (isset($_POST['submit']))
 {
@@ -14,6 +15,7 @@ if (isset($_POST['submit']))
         $errors['password'] = 'Password cannot be empty';
     }
     if(empty($errors)) {
+        //hashes the password and inserts the hashed password and email into the database
         $password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO gebruikers (email, password)
                   VALUES ('$email', '$password')";

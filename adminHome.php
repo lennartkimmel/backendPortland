@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+// Confirm login. Otherwise redirect to the login page
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['email']);

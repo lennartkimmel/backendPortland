@@ -61,6 +61,7 @@ mysqli_close($db);
         }
         $id = $gemaakteReservering['id'];
         ?>
+<!--        Returns the database values to the appropriate collum's      -->
         <tr class="<?= $rowClass; ?>">
             <td><?= $i + 1; ?>
             <td><?= $gemaakteReservering['Voornaam']; ?></td>

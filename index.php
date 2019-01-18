@@ -7,11 +7,11 @@ $errors = [];
 if (isset($_POST['submit'])) {
     //Postback with the data showed to the user, first retrieve data from 'Super global'
     $firstName      = mysqli_real_escape_string($db, $_POST['Voornaam']);
-    $lastName       = mysqli_real_escape_string($db,$_POST['Achternaam']);
-    $street         = mysqli_real_escape_string($db,$_POST['Straatnaam']);
-    $email          = mysqli_real_escape_string($db,$_POST['Email']);
-    $phoneNumber    = mysqli_real_escape_string($db,$_POST['Telefoon']);
-    $visitorsPass   = mysqli_real_escape_string($db,$_POST['Bezoekerspas']);
+    $lastName       = mysqli_real_escape_string($db, $_POST['Achternaam']);
+    $street         = mysqli_real_escape_string($db, $_POST['Straatnaam']);
+    $email          = mysqli_real_escape_string($db, $_POST['Email']);
+    $phoneNumber    = mysqli_real_escape_string($db, $_POST['Telefoon']);
+    $visitorsPass   = mysqli_real_escape_string($db, $_POST['Bezoekerspas']);
 
 
     $errors = getErrorsForEmptyFields($firstName, $lastName, $street, $email, $phoneNumber, $visitorsPass);
