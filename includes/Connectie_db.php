@@ -1,6 +1,6 @@
 <?php
 //Require DB settings with connection variable
-require_once "connectToDb.php";
+require_once "connect_to_db.php";
 
 //Get the result set from the database with a SQL query
 $query = "SELECT * FROM reserveringen";

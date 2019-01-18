@@ -1,6 +1,6 @@
 <?php
-// hiermee koppel je dit .php bestand aan de database
-include_once 'includes/connectToDb.php';
+// With this line of code you can connect this .php file to the database
+include_once 'includes/connect_to_db.php';
 
 $errors = [];
 
@@ -154,7 +154,7 @@ showErrorsOnClientSide($errors);
         <li>KvK: 66134617 | Giften: NL68RABO0311225756 | ANBI instelling: 856409455</li>
     </ul>
 </footer>
-<!-- scripts -->
+<!-- Javascripts -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="js/init.js"></script>

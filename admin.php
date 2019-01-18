@@ -1,6 +1,6 @@
 <?php
 //Require database in this file
-require_once "includes/connectToDb.php";
+require_once "includes/connect_to_db.php";
 
 //If form is posted, lets validate!
 if (isset($_POST['submit']))
