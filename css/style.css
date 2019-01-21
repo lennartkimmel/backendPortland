@@ -27,6 +27,14 @@ label {
     font-weight: bold;
 }
 
+.date-picker {
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top: 14%;
+    margin-left: 2%;
+}
+
 .home-body {
     background-color: #f2bdc9;
 }

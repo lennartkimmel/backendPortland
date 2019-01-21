@@ -20,27 +20,27 @@ if (isset($_GET['logout'])) {
     <title>Document</title>
 </head>
 <body class="home-body">
-    <header>
-        <img src="images/PortlandLogo.png" class="adminloginlogo">
-    </header>
-    <div class="admin-home-button">
+<header>
+    <img src="images/PortlandLogo.png" class="adminloginlogo">
+</header>
+<div class="admin-home-button">
     <?php if (isset($_SESSION['email'])) { ?>
-        <div class="btn-container" align="center">
-            <div class="btn1">
-                <a class="" href="show_table.php"><b>Reserveringen</b></a>
-            </div>
-            <br>
-            <br>
-            <div class="btn1">
-                <a class="" href="admin.php"><b>Create new user</b></a>
-            </div>
-            <br>
-            <br>
-            <div class="btn1">
-                <a class="" href="admin_logout.php"><b>Logout</b></a>
-            </div>
+    <div class="btn-container" align="center">
+        <div class="btn1">
+            <a class="" href="show_table.php"><b>Reserveringen</b></a>
+        </div>
+        <br>
+        <br>
+        <div class="btn1">
+            <a class="" href="admin.php"><b>Create new user</b></a>
+        </div>
+        <br>
+        <br>
+        <div class="btn1">
+            <a class="" href="admin_logout.php"><b>Logout</b></a>
         </div>
     </div>
+</div>
 <?php } ?>
 </body>
 </html>

@@ -8,10 +8,10 @@ $query = 'SELECT * FROM reserveringen';
 $result = mysqli_query($db, $query)
 or die('Error'. mysqli_error($db));
 
-$gemaakteReserveringen = [];
+$reservations = [];
 
 while($row = mysqli_fetch_assoc($result)){
-    $gemaakteReserveringen [] = $row;
+    $reservations [] = $row;
 }
 mysqli_close($db);
 ?>
@@ -51,25 +51,25 @@ mysqli_close($db);
     <tfoot>
     </tfoot>
     <tbody>
-<!--    <input type="text" class="datepicker">-->
-    <?php foreach($gemaakteReserveringen as $i => $gemaakteReservering ) { ?>
+    <!--    <input type="text" class="datepicker">-->
+    <?php foreach($reservations as $i => $reservation ) { ?>
         <?php
         //Use the 'modulus' check to define a odd/even class for the table rows
         $rowClass = 'odd';
         if ($i % 2 > 0) {
             $rowClass = 'even';
         }
-        $id = $gemaakteReservering['id'];
+        $id = $reservation['id'];
         ?>
-<!--        Returns the database values to the appropriate collum's      -->
+        <!--        Returns the database values to the appropriate collum's      -->
         <tr class="<?= $rowClass; ?>">
             <td><?= $i + 1; ?>
-            <td><?= $gemaakteReservering['Voornaam']; ?></td>
-            <td><?= $gemaakteReservering['Achternaam']; ?></td>
-            <td><?= $gemaakteReservering['Straatnaam']; ?></td>
-            <td><?= $gemaakteReservering['Email']; ?></td>
-            <td><?= $gemaakteReservering['Telefoon']; ?></td>
-            <td><?= $gemaakteReservering['Bezoekerspas']; ?></td>
+            <td><?= $reservation['Voornaam']; ?></td>
+            <td><?= $reservation['Achternaam']; ?></td>
+            <td><?= $reservation['Straatnaam']; ?></td>
+            <td><?= $reservation['Email']; ?></td>
+            <td><?= $reservation['Telefoon']; ?></td>
+            <td><?= $reservation['Bezoekerspas']; ?></td>
             <td><a href="deleteFromTable.php?id=<?= $id; ?>">Delete</a></td>
         </tr>
     <?php } ?>

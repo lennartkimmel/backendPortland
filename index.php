@@ -12,8 +12,9 @@ if (isset($_POST['submit'])) {
     $email          = mysqli_real_escape_string($db, $_POST['Email']);
     $phoneNumber    = mysqli_real_escape_string($db, $_POST['Telefoon']);
     $visitorsPass   = mysqli_real_escape_string($db, $_POST['Bezoekerspas']);
+    $pickedDate     = mysqli_real_escape_string($db, $_POST['Datum']);
 
-
+// Checks if there are errors and shows errors for every empty field
     $errors = getErrorsForEmptyFields($firstName, $lastName, $street, $email, $phoneNumber, $visitorsPass);
 
     $hasErrors = !empty($errors);
@@ -23,6 +24,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// Checks if $errors is not empty if it is > it will echo errors as HTML on the client side.
 function showErrorsOnClientSide ($errors) {
     $hasErrors = !empty($errors);
     if ($hasErrors) {
@@ -107,35 +109,42 @@ showErrorsOnClientSide($errors);
 <!--in een FORM moeten altijd meerdere attributen zitten zoals: type (verplicht bij HTML)  -> name (Verplicht bij php anders niet opgenomen in PHP)-> value-->
 <section class="sectionBody">
     <div class="container">
-    <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post">
-        <div class="">
-            <label for="Voornaam" class="labels">Voornaam</label>
-            <input class="" type="text" name="Voornaam" placeholder="Voornaam" value="<?= (isset($firstName) ? $firstName : ''); ?>"/>
-        </div>
-        <div class="">
-            <label for="Achternaam" class="labels">Achternaam</label>
-            <input class="" type="text" name="Achternaam" placeholder="Achternaam" value="<?= (isset($lastName) ? $lastName : ''); ?>"/>
-        </div>
-        <div class="">
-            <label for="Straatnaam" class="labels">Straatnaam</label>
-            <input class="" type="text" name="Straatnaam" placeholder="Straatnaam" value="<?= (isset($street) ? $street : ''); ?>"/>
-        </div>
-        <div class="">
-            <label for="Email">Email</label>
-            <input class="" type="email" name="Email" placeholder="Email" value="<?= (isset($email) ? $email : ''); ?>"/>
-        </div>
-        <div class="">
-            <label for="Telefoon">Telefoonnummer</label>
-            <input class="" type="number" name="Telefoon" placeholder="Telefoonnummer" value="<?= (isset($phoneNumber) ? $phoneNumber : ''); ?>"/>
-        </div>
-        <div class="">
-            <label for="Bezoekerspas">Bezoekerspas</label>
-            <input class="" type="text" name="Bezoekerspas" placeholder="Bezoekerspas" value="<?= (isset($visitorsPass) ? $visitorsPass : ''); ?>"/>
-        </div>
-        <div class="data-submit">
-            <input type="submit" name="submit" value="Reserveren"/>
-        </div>
-    </form>
+        <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post">
+            <div class="">
+                <label for="Voornaam" class="labels">Voornaam</label>
+                <input class="" type="text" name="Voornaam" placeholder="Voornaam" value="<?= (isset($firstName) ? $firstName : ''); ?>"/>
+            </div>
+            <div class="">
+                <label for="Achternaam" class="labels">Achternaam</label>
+                <input class="" type="text" name="Achternaam" placeholder="Achternaam" value="<?= (isset($lastName) ? $lastName : ''); ?>"/>
+            </div>
+            <div class="">
+                <label for="Straatnaam" class="labels">Straatnaam</label>
+                <input class="" type="text" name="Straatnaam" placeholder="Straatnaam" value="<?= (isset($street) ? $street : ''); ?>"/>
+            </div>
+            <div class="">
+                <label for="Email">Email</label>
+                <input class="" type="email" name="Email" placeholder="Email" value="<?= (isset($email) ? $email : ''); ?>"/>
+            </div>
+            <div class="">
+                <label for="Telefoon">Telefoonnummer</label>
+                <input class="" type="number" name="Telefoon" placeholder="Telefoonnummer" value="<?= (isset($phoneNumber) ? $phoneNumber : ''); ?>"/>
+            </div>
+            <div class="">
+                <label for="Bezoekerspas">Bezoekerspas</label>
+                <input class="" type="text" name="Bezoekerspas" placeholder="Bezoekerspas" value="<?= (isset($visitorsPass) ? $visitorsPass : ''); ?>"/>
+            </div>
+            <div class="data-submit">
+                <input type="submit" name="submit" value="Reserveren"/>
+            </div>
+            <div class="data-submit">
+                <a class="" href="https://www.hulpcentrumportland.nl/"><u>Naar home</u></a>
+            </div>
+            <div class="date-picker">
+                <label for="date-start">Datum</label>
+                <input type="date" name="Datum">
+            </div>
+        </form>
     </div>
 </section>
 

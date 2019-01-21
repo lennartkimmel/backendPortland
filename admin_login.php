@@ -8,7 +8,8 @@ if (isset($_POST['submit'])) {
 
     $email      = mysqli_escape_string($db, $_POST['email']);
     $password   = $_POST['password'];
-    $errors = [];
+    $errors     = [];
+
     if(empty($email)) {
         $errors['email'] = 'Email cannot be empty';
     }
@@ -19,9 +20,10 @@ if (isset($_POST['submit'])) {
     if(empty($errors))
     {
         //Get the email from the DB
-        $query = sprintf("SELECT * FROM gebruikers WHERE email = '%s'", mysqli_real_escape_string($db, $email));
+        $query  = sprintf("SELECT * FROM gebruikers WHERE email = '%s'", mysqli_real_escape_string($db, $email));
         $result = mysqli_query($db, $query);
-        $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $user   = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
         //Check if email exists in database
         $errors = [];
         if ($user)
