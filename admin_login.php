@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     if(empty($errors))
     {
         //Get the email from the DB
-        $query  = sprintf("SELECT * FROM gebruikers WHERE email = '%s'", mysqli_real_escape_string($db, $email));
+        $query  = sprintf("SELECT * FROM gebruikers WHERE email = '%s'", mysqli_escape_string($db, $email));
         $result = mysqli_query($db, $query);
         $user   = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
@@ -35,12 +35,10 @@ if (isset($_POST['submit'])) {
                 //Redirect to secure.php & exit script
                 header("Location: admin_home.php");
                 exit;
-            }
-            else {
+            } else {
                 $errors['password'] = 'The password is incorrect';
             }
-        } else
-        {
+        } else {
             $errors['email'] = 'This email does not appear to exist.';
         }
     }

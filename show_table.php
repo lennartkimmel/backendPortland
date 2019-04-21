@@ -64,13 +64,13 @@ mysqli_close($db);
         <!--        Returns the database values to the appropriate collum's      -->
         <tr class="<?= $rowClass; ?>">
             <td><?= $i + 1; ?>
-            <td><?= $reservation['Voornaam']; ?></td>
-            <td><?= $reservation['Achternaam']; ?></td>
-            <td><?= $reservation['Straatnaam']; ?></td>
-            <td><?= $reservation['Email']; ?></td>
-            <td><?= $reservation['Telefoon']; ?></td>
-            <td><?= $reservation['Bezoekerspas']; ?></td>
-            <td><a href="deleteFromTable.php?id=<?= $id; ?>">Delete</a></td>
+            <td><?= htmlentities($reservation['Voornaam']); ?></td>
+            <td><?= htmlentities($reservation['Achternaam']); ?></td>
+            <td><?= htmlentities($reservation['Straatnaam']); ?></td>
+            <td><?= htmlentities($reservation['Email']); ?></td>
+            <td><?= htmlentities($reservation['Telefoon']); ?></td>
+            <td><?= htmlentities($reservation['Bezoekerspas']); ?></td>
+            <td><a href="delete_from_table.php?id=<?= $id; ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
