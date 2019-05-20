@@ -70,6 +70,7 @@ mysqli_close($db);
             <td><?= htmlentities($reservation['Email']); ?></td>
             <td><?= htmlentities($reservation['Telefoon']); ?></td>
             <td><?= htmlentities($reservation['Bezoekerspas']); ?></td>
+            <td><a href="update_from_table.php?id=<?= $id; ?>">Update</a></td>
             <td><a href="delete_from_table.php?id=<?= $id; ?>">Delete</a></td>
         </tr>
     <?php } ?>

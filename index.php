@@ -2,11 +2,6 @@
 // With this line of code you can connect this .php file to the database
 include_once 'includes/connect_to_db.php';
 
-//Call on PHPMailer Library
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'C:\xampp\composer\vendor\autoload.php';
-
 $errors = [];
 
 if (isset($_POST['submit'])) {
@@ -26,51 +21,7 @@ if (isset($_POST['submit'])) {
 
     if (!$hasErrors) {
         insertReservationIntoDatabase($db, $firstName, $lastName, $street, $email, $phoneNumber, $visitorsPass);
-
-        //If result is send, an e-mail with the name, date and time from the fom is send to the given email
-                        $mail = new PHPMailer(true);
-                        try {
-                            //Server settings
-                            $mail->IsSMTP(); // enable SMTP
-                            $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-                            $mail->SMTPAuth = true; // authentication enabled
-                            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-                            $mail->Host = "smtp.gmail.com";
-                            $mail->Port = 465; // or 58
-                            $mail->Username = $mailUser;                 // SMTP username
-                            $mail->Password = $mailPassword;             // SMTP password
-
-
-                            //
-                            $mail->setFrom($mailUser, 'L Kimmel');
-                            $mail->addAddress($email, $firstname);
-
-
-                            //This is the body and content of the e-mail
-                            $mail->isHTML(true);    // The e-mail is now sent in an HTML format
-                            $mail->Subject = 'Uw afspraak voor '.$pickedDate.'.'; //Subject of the e-mail
-                            $mail->Body ='Beste '.$firstname.', <br> <br>
-                             U ontvangt deze mail ter bevestiging van uw afspraak. Uw afspraak staat gepland op '.$pickedDate.' <br> <br>
-                            Als u uw afspraak wilt afzeggen of wijzigen, kunt u contact met mij opnemen via het telefoonnummer  06-xxxxxxx <br> <br>
-                            Ik zie u graag binnenkort in het restaurant! <br> <br>
-                            Met vriendelijke groet, <br>
-                            Hulpcentrum Portland';
-
-                            $mail->AltBody = 'Beste '.$firstname.', <br> <br>
-                            U ontvangt deze mail ter bevestiging van uw afspraak. Uw afspraak staat gepland op '.$pickedDate.' <br> <br>
-                            Als u uw afspraak wilt afzeggen of wijzijgen, kunt u contact met mij opnemen via het telefoonnummer 06-xxxxxxxx <br> <br>
-                            Ik zie u graag binnenkort in het restaurant!. <br> <br>
-                            Met vriendelijke groet, <br>
-                            Hulpcentrum Portland';
-
-                            $mail->send();
-//                            echo 'Message has been sent';
-                            } catch (Exception $e) {
-//                            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-                            }
-
-                        }
-
+    }
 
 }
 
