@@ -134,7 +134,7 @@ mysqli_close($db);
     </div>
 </form>
 <div>
-    <a href="index.php">Go back to the list</a>
+    <a href="show_table.php">Go back to the list</a>
 </div>
 </body>
 </html>

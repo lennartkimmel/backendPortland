@@ -1,0 +1,99 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+            <h1>Search with Scryfall API</h1>
+        
+    <input type="text" id="searchMTG" placeholder="type name of card here..." />
+
+    <div id="result">
+    </div>
+
+    <form action="" method=""></form>
+
+        <input type="text" name="" />
+
+         <input type="submit" name="submit" value="Versturen"/>
+</form>
+
+<p>
+    <a href="">Link naar dezelfde pagina</a>
+</p>
+
+    <script>
+
+    // Main
+    var APP = (function() {
+
+        // Scope object
+        var scope = {};
+
+        // Initialisation method (constructor)
+        var init = function() {
+            bind();
+        }
+
+        // Event binding on HTML elements
+        var bind = function() {
+            let input = document.getElementById('searchMTG');
+            input.onchange = ((evt) => { 
+                let text = evt.target.value;
+
+                scope.searchCards(text);
+            });
+        }
+
+        // Search the cards with the help of the API (web call)
+        scope.searchCards = function(input) {
+            fetch(`https://api.scryfall.com/cards/search?q=${input}`).then(result => {
+                result.json().then(json => {
+                
+                    renderCards(json.data);
+                });
+            });
+        }
+
+        // Draw the result cards to the screen
+        var renderCards = function(cards) {
+
+            // Get reference to the result window
+            let container = document.getElementById('result');
+            
+            // Clear previous results
+            container.innerHTML = null;
+
+            for(card of cards) {
+                let element = document.createElement('div');
+
+                let title = document.createElement('h2');
+                title.innerHTML = card.name;
+
+                let image = document.createElement('img');
+                image.src = card.image_uris.small;
+
+                // Add title and image to 'element'
+                element.append(title);
+                element.append(image);
+
+                // Add element to container
+                container.append(element);
+            }
+        }
+
+        // Initialisation
+        init();
+
+        // Return scope
+        return scope;
+
+        })();
+
+     </script>
+
+    </body>
+</html>

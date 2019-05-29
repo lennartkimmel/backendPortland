@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
     if (!$hasErrors) {
         insertReservationIntoDatabase($db, $firstName, $lastName, $street, $email, $phoneNumber, $visitorsPass);
     }
-
+    header("Location: email.php");
+    die();
 }
 
 // Checks if $errors is not empty if it is > it will echo errors as HTML on the client side.
@@ -72,9 +73,9 @@ function insertReservationIntoDatabase($db, $firstName, $lastName, $street, $ema
                   VALUES ('$firstName', '$lastName', '$street', '$email', '$phoneNumber', '$visitorsPass')";
     $result = mysqli_query($db, $query)
     or die('Error: '.$query);
-    //When you inserted data into the table you'll get redirected to the index.php page
+    //When you inserted data into the table you'll get redirected to the email.php page
     if ($result) {
-        header('Location: index.php');
+        header('Location: email.php');
         exit;
     } else {
         $errors[] = 'Something went wrong in your database query: ' . mysqli_error($db);
@@ -145,6 +146,13 @@ showErrorsOnClientSide($errors);
             <div class="data-submit">
                 <input type="submit" name="submit" value="Reserveren"/>
             </div>
+
+            <div id="endResult">
+            </div>
+
+
+
+
             <div class="data-submit">
                 <a class="" href="https://www.hulpcentrumportland.nl/"><u>Naar home</u></a>
             </div>
@@ -179,5 +187,74 @@ showErrorsOnClientSide($errors);
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
+<script>
+
+    // Main
+    var APP = (function() {
+
+        // Scope object
+        var scope = {};
+
+        // Initialisation method (constructor)
+        var init = function() {
+            bind();
+        }
+
+        // Event binding on HTML elements
+        var bind = function() {
+            let input = document.getElementById('searchMTG');
+            input.onchange = ((evt) => { 
+                let text = evt.target.value;
+
+                scope.searchCards(text);
+            });
+        }
+
+        // Search the cards with the help of the API (web call)
+        scope.searchCards = function(input) {
+            fetch(`https://api.scryfall.com/cards/search?q=${input}`).then(result => {
+                result.json().then(json => {
+                
+                    renderCards(json.data);
+                });
+            });
+        }
+
+        // Draw the result cards to the screen
+        var renderCards = function(cards) {
+
+            // Get reference to the result window
+            let container = document.getElementById('endResult');
+            
+            // Clear previous results
+            container.innerHTML = null;
+
+            for(card of cards) {
+                let element = document.createElement('div');
+
+                let title = document.createElement('h2');
+                title.innerHTML = card.name;
+
+                let image = document.createElement('img');
+                image.src = card.image_uris.small;
+
+                // Add title and image to 'element'
+                element.append(title);
+                element.append(image);
+
+                // Add element to container
+                container.append(element);
+            }
+        }
+
+        // Initialisation
+        init();
+
+        // Return scope
+        return scope;
+
+    })();
+
+</script>
 </body>
 </html>

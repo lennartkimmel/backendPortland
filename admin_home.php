@@ -1,5 +1,21 @@
 <?php
 session_start();
+
+// $json = file_get_contents('https://api.scryfall.com/cards/');
+// $obj = json_decode($json);
+
+$cards = array();
+
+if (isset($_GET['cardname'])) {
+
+    $cardname = $_GET['cardname'];
+
+    $json = file_get_contents('https://api.scryfall.com/cards/search?q=' . $cardname);
+    $cards = json_decode($json)->data;
+    // print_r(json_decode($json));
+    // exit;
+}
+
 // Confirm login. Otherwise redirect to the login page
 if (isset($_GET['logout'])) {
     session_destroy();
@@ -26,6 +42,16 @@ if (isset($_GET['logout'])) {
 <div class="admin-home-button">
     <?php if (isset($_SESSION['email'])) { ?>
     <div class="btn-container" align="center">
+        <div>
+            <input type="text" id="searchMTG" name="ZoekKaarten" placeholder="type name of card here..." />
+        </div>
+
+        <?php foreach ($cards as $card) { ?>
+             <img src="<?= print($card->image_uris->normal) ?>"/>
+         <?php } ?>
+
+        <br>
+        <br>
         <div class="btn1">
             <a class="" href="show_table.php"><b>Reserveringen</b></a>
         </div>
@@ -42,6 +68,7 @@ if (isset($_GET['logout'])) {
     </div>
 </div>
 <?php } ?>
+<script type="text/javascript" src="js/api.js"></script>
 </body>
 </html>
 
