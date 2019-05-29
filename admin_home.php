@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-// $json = file_get_contents('https://api.scryfall.com/cards/');
-// $obj = json_decode($json);
-
 $cards = array();
 
 if (isset($_GET['cardname'])) {
@@ -12,8 +9,6 @@ if (isset($_GET['cardname'])) {
 
     $json = file_get_contents('https://api.scryfall.com/cards/search?q=' . $cardname);
     $cards = json_decode($json)->data;
-    // print_r(json_decode($json));
-    // exit;
 }
 
 // Confirm login. Otherwise redirect to the login page
