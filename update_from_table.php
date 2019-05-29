@@ -68,6 +68,8 @@ if (isset($_POST['submit'])) {
         if ($result) {
             //Set success message
             $success = true;
+            header("Location: show_table.php");
+            die();
         } else {
             $errors[] = 'Something went wrong in your database query: ' . mysqli_error($db);
         }
