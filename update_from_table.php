@@ -86,7 +86,7 @@ mysqli_close($db);
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1>Edit "<?= $infoLijst['Voornaam'] . ' - ' . $infoLijst['Achternaam']; ?>"</h1>
+<h1>Update hier uw reservering!</h1>
 <?php if (isset($errors) && !empty($errors)) { ?>
     <ul class="errors">
         <?php for ($i = 0; $i < count($errors); $i++) { ?>
@@ -95,38 +95,34 @@ mysqli_close($db);
     </ul>
 <?php } ?>
 
-<?php if (isset($success)) { ?>
-    <p class="success">Je album is bijgewerkt in de database</p>
-<?php } ?>
-
 <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post" enctype="multipart/form-data">
     <div class="data-field">
         <label for="Voornaam">Voornaam</label>
-        <input id="Voornaam" type="text" name="Voornaam" value="<?= $infoLijst['Voornaam']; ?>"/>
+        <input id="Voornaam" type="text" name="Voornaam" value=""/>
     </div>
     <div class="data-field">
         <label for="Achternaam">Achternaam</label>
-        <input id="Achternaam" type="text" name="Achternaam" value="<?= $infoLijst['Achternaam']; ?>"/>
+        <input id="Achternaam" type="text" name="Achternaam" value=""/>
     </div>
     <div class="data-field">
         <label for="Straatnaam">Straatnaam</label>
-        <input id="Straatnaam" type="text" name="Straatnaam" value="<?= $infoLijst['Straatnaam']; ?>"/>
+        <input id="Straatnaam" type="text" name="Straatnaam" value=""/>
     </div>
     <div class="data-field">
         <label for="Email">E-mail</label>
-        <input id="Email" type="text" name="Email" value="<?= $infoLijst['Email']; ?>"/>
+        <input id="Email" type="text" name="Email" value=""/>
     </div>
     <div class="data-field">
         <label for="Telefoon">Telefoonnummer</label>
-        <input id="Telefoon" type="number" name="Telefoon" value="<?= $infoLijst['Telefoon']; ?>"/>
+        <input id="Telefoon" type="number" name="Telefoon" value=""/>
     </div>
     <div class="data-field">
         <label for="Bezoekerspas">Bezoekerspas</label>
-        <input type="Bezoekerspas" type="text" name="Bezoekerspas" value="<?= $infoLijst['Bezoekerspas']; ?>"/>
+        <input type="Bezoekerspas" type="text" name="Bezoekerspas" value=""/>
     </div>
     <div class="data-field">
         <label for="Datum">Datum</label>
-        <input type="Datum" type="text" name="Datum" value="<?= $infoLijst['Datum']; ?>"/>
+        <input type="Datum" type="text" name="Datum" value=""/>
     </div>
     <div class="data-submit">
         <input type="hidden" name="id" value="<?= $rowId; ?>"/>
