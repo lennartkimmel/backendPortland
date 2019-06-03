@@ -76,6 +76,12 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$query2 = "SELECT * FROM reserveringen WHERE id = '$rowId' LIMIT 1";
+        $result2 = mysqli_query($db, $query2); 
+
+        
+        $infoLijst = $result2->fetch_assoc();
+
 //Close connection
 mysqli_close($db);
 ?>
@@ -100,31 +106,31 @@ mysqli_close($db);
 <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post" enctype="multipart/form-data">
     <div class="data-field">
         <label for="Voornaam">Voornaam</label>
-        <input id="Voornaam" type="text" name="Voornaam" value=""/>
+        <input id="Voornaam" type="text" name="Voornaam" value="<?=$infoLijst['Voornaam']?>"/>
     </div>
     <div class="data-field">
         <label for="Achternaam">Achternaam</label>
-        <input id="Achternaam" type="text" name="Achternaam" value=""/>
+        <input id="Achternaam" type="text" name="Achternaam" value="<?=$infoLijst['Achternaam']?>"/>
     </div>
     <div class="data-field">
         <label for="Straatnaam">Straatnaam</label>
-        <input id="Straatnaam" type="text" name="Straatnaam" value=""/>
+        <input id="Straatnaam" type="text" name="Straatnaam" value="<?=$infoLijst['Straatnaam']?>"/>
     </div>
     <div class="data-field">
         <label for="Email">E-mail</label>
-        <input id="Email" type="text" name="Email" value=""/>
+        <input id="Email" type="text" name="Email" value="<?=$infoLijst['Email']?>"/>
     </div>
     <div class="data-field">
         <label for="Telefoon">Telefoonnummer</label>
-        <input id="Telefoon" type="number" name="Telefoon" value=""/>
+        <input id="Telefoon" type="number" name="Telefoon" value="<?=$infoLijst['Telefoon']?>"/>
     </div>
     <div class="data-field">
         <label for="Bezoekerspas">Bezoekerspas</label>
-        <input type="Bezoekerspas" type="text" name="Bezoekerspas" value=""/>
+        <input type="Bezoekerspas" type="text" name="Bezoekerspas" value="<?=$infoLijst['Bezoekerspas']?>"/>
     </div>
     <div class="data-field">
         <label for="Datum">Datum</label>
-        <input type="Datum" type="text" name="Datum" value=""/>
+        <input type="Datum" type="text" name="Datum" value="<?=$infoLijst['Datum']?>"/>
     </div>
     <div class="data-submit">
         <input type="hidden" name="id" value="<?= $rowId; ?>"/>

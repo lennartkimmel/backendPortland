@@ -4,7 +4,7 @@ include_once 'includes/connect_to_db.php';
 
 $errors = [];
 
-if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
     //Postback with the data showed to the user, first retrieve data from 'Super global'
     $firstName      = mysqli_real_escape_string($db, $_POST['Voornaam']);
     $lastName       = mysqli_real_escape_string($db, $_POST['Achternaam']);
